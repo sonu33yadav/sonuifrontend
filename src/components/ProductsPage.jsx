@@ -41,7 +41,7 @@ function ProductsPage({
                         </div>
                         <div className="field-group">
                             <label htmlFor="product-quantity">Quantity</label>
-                            <input id="product-quantity" type="number" placeholder="Available stock" value={productForm.quantity_in_stock} onChange={(e) => setProductForm({ ...productForm, quantity_in_stock: e.target.value })} required />
+                            <input id="product-quantity" type="number" placeholder="Available stock" value={productForm.quantity} onChange={(e) => setProductForm({ ...productForm, quantity: e.target.value })} required />
                         </div>
                     </div>
                     <button type="submit" className="button-primary">Save Product</button>
@@ -87,9 +87,9 @@ function ProductsPage({
                                 </td>
                                 <td className="table-cell-center">
                                     {editingProductId === product.id ? (
-                                        <input type="number" value={productEditValues.quantity_in_stock} onChange={(e) => handleProductEditChange('quantity_in_stock', e.target.value)} />
+                                        <input type="number" value={productEditValues.quantity} onChange={(e) => handleProductEditChange('quantity', e.target.value)} />
                                     ) : (
-                                        product.quantity_in_stock
+                                        product.quantity
                                     )}
                                 </td>
                                 <td className="table-cell-end">

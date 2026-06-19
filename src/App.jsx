@@ -7,8 +7,8 @@ import OrdersPage from './components/OrdersPage';
 import { createCustomer as apiCreateCustomer, createOrder as apiCreateOrder, createProduct as apiCreateProduct, deleteCustomer as apiDeleteCustomer, deleteOrder as apiDeleteOrder, deleteProduct as apiDeleteProduct, getCustomers, getOrders, getProducts, updateCustomer as apiUpdateCustomer, updateOrder as apiUpdateOrder, updateProduct as apiUpdateProduct } from './api';
 
 const fallbackProducts = [
-    { id: 1, name: 'Wireless Mouse', sku: 'WM-010', price: 29.99, quantity_in_stock: 25 },
-    { id: 2, name: 'Keyboard', sku: 'KB-120', price: 49.99, quantity_in_stock: 12 },
+    { id: 1, name: 'Wireless Mouse', sku: 'WM-010', price: 29.99, quantity: 25 },
+    { id: 2, name: 'Keyboard', sku: 'KB-120', price: 49.99, quantity: 12 },
 ];
 
 const fallbackCustomers = [
@@ -30,7 +30,7 @@ function App() {
         name: '',
         sku: '',
         price: '',
-        quantity_in_stock: '',
+        quantity: '',
     });
     const [customerForm, setCustomerForm] = useState({
         full_name: '',
@@ -48,7 +48,7 @@ function App() {
         name: '',
         sku: '',
         price: '',
-        quantity_in_stock: '',
+        quantity: '',
     });
     const [editingCustomerId, setEditingCustomerId] = useState(null);
     const [customerEditValues, setCustomerEditValues] = useState({
@@ -109,7 +109,7 @@ function App() {
             name: productForm.name,
             sku: productForm.sku,
             price: Number(productForm.price),
-            quantity_in_stock: Number(productForm.quantity_in_stock),
+            quantity: Number(productForm.quantity),
         };
 
         try {
@@ -120,7 +120,7 @@ function App() {
             setProducts([...products, nextProduct]);
         }
 
-        setProductForm({ name: '', sku: '', price: '', quantity_in_stock: '' });
+        setProductForm({ name: '', sku: '', price: '', quantity: '' });
     };
 
     const handleCustomerSubmit = async (event) => {
@@ -177,13 +177,13 @@ function App() {
             name: product.name,
             sku: product.sku,
             price: product.price,
-            quantity_in_stock: product.quantity_in_stock,
+            quantity: product.quantity,
         });
     };
 
     const cancelProductEdit = () => {
         setEditingProductId(null);
-        setProductEditValues({ name: '', sku: '', price: '', quantity_in_stock: '' });
+        setProductEditValues({ name: '', sku: '', price: '', quantity: '' });
     };
 
     const handleProductEditChange = (field, value) => {
@@ -196,7 +196,7 @@ function App() {
         const updatedProduct = {
             ...productEditValues,
             price: Number(productEditValues.price),
-            quantity_in_stock: Number(productEditValues.quantity_in_stock),
+            quantity: Number(productEditValues.quantity),
         };
 
         try {

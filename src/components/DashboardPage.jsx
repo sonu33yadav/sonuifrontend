@@ -1,7 +1,7 @@
 import React from 'react';
 
 function DashboardPage({ products, customers, orders }) {
-    const lowStock = products.filter((product) => product.quantity_in_stock <= 5).length;
+    const lowStock = products.filter((product) => product.quantity <= 5).length;
 
     return (
         <section className="dashboard-grid">
